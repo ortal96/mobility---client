@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="title">wellcom to your orders</h1>
+
+  <mat-form-field class="dropdown">
+    <mat-label>select user</mat-label>
+    <mat-select (selectionChange)="onSelectItem($event)">
+      <mat-option *ngFor="let u of allUsers" [value]="u.id">
+        {{ u.first_name +  " " + u.last_name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <div class="product-container">
+    <mat-card class="product-card" *ngFor="let product of products">
+      <mat-card-header>
+        <div mat-card-avatar class="product-avatar"></div>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+
+      </mat-card-header>
+      <img mat-card-image [src]="product.img" alt="{{ product.name }}">
+      <mat-card-content>
+        <p>price: {{ product.price }}</p>
+        <p>amount: {{ product.amount }}</p>
+        <p>size: {{ product.size }}</p>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+  <button *ngIf="userId != 0" mat-raised-button color="primary" (click) = goToAddress()>set your address</button>
+
+</div>

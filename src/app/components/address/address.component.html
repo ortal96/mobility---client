@@ -1,0 +1,10 @@
+<mat-card class="address-card">
+  <mat-card-title>address details</mat-card-title>
+  <mat-card-content>
+    <p><strong>street : </strong> {{ addressDeatails!.street_name }}</p>
+    <p><strong>city : </strong> {{ addressDeatails!.city_name }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openEditDialog()">edit address</button>
+  </mat-card-actions>
+</mat-card>

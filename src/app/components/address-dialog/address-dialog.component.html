@@ -1,0 +1,26 @@
+<div class="container">
+  <form [formGroup]="addressForm">
+    <mat-form-field class="form-field">
+      <mat-label>city</mat-label>
+      <mat-select formControlName="city" placeholder="chose a city" (selectionChange)="getStreetsOnChange($event.value)">
+        <mat-option *ngFor="let city of allCities" [value]="city.id">
+          {{ city.city_name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="addressForm.get('city')?.hasError('required')">required input</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>street</mat-label>
+      <mat-select formControlName="street" placeholder="chose street">
+        <mat-option *ngFor="let street of streets" [value]="street.id">
+          {{ street.street_name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="addressForm.get('street')?.hasError('required')">required</mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="addressForm.invalid">edit</button>
+  </form>
+</div>
